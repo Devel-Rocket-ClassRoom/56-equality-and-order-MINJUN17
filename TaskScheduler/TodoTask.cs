@@ -27,8 +27,14 @@ class TodoTask: IComparable<TodoTask>
         }
         if(Priority.CompareTo(other.Priority) != 0)
         {
-            return Priority.CompareTo(other.Priority);
+            return other.Priority.CompareTo(Priority);
         }
-        
+        var datetime = DateTime.Parse(DueDate);
+        var otherDatetime = DateTime.Parse(other.DueDate);
+        if (datetime.CompareTo(otherDatetime) != 0)
+        {
+            return datetime.CompareTo(otherDatetime);
+        }
+        return Title.CompareTo(other.Title);
     }
 }
